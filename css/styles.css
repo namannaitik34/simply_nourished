@@ -107,6 +107,10 @@ img{max-width:100%; display:block}
 .modal-backdrop{position:fixed; inset:0; background:rgba(0,0,0,0.35); display:flex; align-items:center; justify-content:center; padding:2rem; z-index:60}
 .modal{background:white; border-radius:12px; padding:1.5rem; max-width:520px; width:100%; box-shadow:0 30px 60px rgba(38,50,56,0.15)}
 .modal .close{background:transparent; border:none; font-size:1.1rem; color:var(--muted)}
+
+/* Nav backdrop used for mobile slide-in panel */
+.nav-backdrop{position:fixed; inset:0; background:rgba(0,0,0,0.35); z-index:55; opacity:0; pointer-events:none; transition:opacity 180ms ease}
+.nav-backdrop.visible{opacity:1; pointer-events:auto}
 @media (max-width:900px){
   .grid-3{grid-template-columns:1fr}
   .hero-inner{flex-direction:column; gap:1.5rem}
@@ -115,7 +119,7 @@ img{max-width:100%; display:block}
   .two-col{grid-template-columns:1fr}
 }
 @media (max-width:600px){
-  .nav-list{display:none}
+  .nav-list{display:flex; flex-direction:column; gap:0.5rem}
   .nav-toggle{display:inline-block}
   .container{padding:1rem}
   .header-inner{padding:0}
@@ -134,7 +138,15 @@ img{max-width:100%; display:block}
 
 /* Ensure nav-list is accessible when opened */
 @media (max-width:600px){
-  .nav-list.open{display:flex; position:absolute; top:64px; right:16px; background:var(--ivory); padding:1rem; border-radius:10px; box-shadow:0 12px 40px rgba(38,50,56,0.08); width:calc(100% - 32px); max-width:320px}
+  /* Slide-in left panel */
+  .nav-list{position:fixed; top:0; left:0; height:100%; width:280px; max-width:80%; background:var(--ivory); padding:1.5rem; border-radius:0 12px 12px 0; box-shadow:0 20px 60px rgba(38,50,56,0.12); transform:translateX(-100%); transition:transform 260ms cubic-bezier(.2,.9,.3,1); z-index:60}
+  .nav-list.open{transform:translateX(0)}
+  .nav-list a{display:block; padding:0.85rem 0.6rem; border-radius:8px}
+  .nav-toggle{z-index:70}
+  /* prevent body scroll when nav open (toggled via JS by adding .nav-open to body) */
+  body.nav-open{overflow:hidden}
+  /* Backdrop visibility controlled by JS */
+  .nav-backdrop{display:block}
 }
 /* Small tweaks for inputs */
 input, textarea{font-family:inherit; font-size:1rem; padding:0.6rem; border:1px solid #eee; border-radius:8px}
