@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520">
+  <rect width="800" height="520" rx="18" fill="#f7f9f8"/>
+  <g fill="#d6e6df">
+    <path d="M160 120c30-40 80-60 140-40s120 80 160 120" stroke="#9aa79a" stroke-width="6" fill="none"/>
+    <circle cx="580" cy="360" r="64"/>
+  </g>
+  <text x="40" y="430" font-family="Playfair Display, serif" font-size="28" fill="#2b3b36">Mindful Eating Mini</text>
+  <text x="40" y="454" font-family="Poppins, Arial" font-size="14" fill="#6b6b6b">Short practices for calm meals</text>
+</svg>

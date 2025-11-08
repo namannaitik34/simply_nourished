@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520">
+  <rect width="800" height="520" rx="18" fill="#fff6f4"/>
+  <g fill="#9aa79a">
+    <circle cx="120" cy="120" r="72"/>
+    <circle cx="240" cy="320" r="60"/>
+    <circle cx="520" cy="200" r="100"/>
+  </g>
+  <text x="40" y="420" font-family="Playfair Display, serif" font-size="28" fill="#2b3b36">100-Day Nourish</text>
+  <text x="40" y="454" font-family="Poppins, Arial" font-size="14" fill="#6b6b6b">Long-term support for sustainable habits</text>
+</svg>

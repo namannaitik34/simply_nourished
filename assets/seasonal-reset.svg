@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520">
+  <rect width="800" height="520" rx="18" fill="#f9f4ee"/>
+  <g fill="#f2d6d6">
+    <rect x="80" y="60" width="180" height="120" rx="12" />
+    <rect x="300" y="120" width="320" height="260" rx="16" />
+  </g>
+  <text x="40" y="430" font-family="Playfair Display, serif" font-size="28" fill="#6b4b48">Seasonal Reset</text>
+  <text x="40" y="454" font-family="Poppins, Arial" font-size="14" fill="#6b6b6b">4-week gentle seasonal focus</text>
+</svg>
