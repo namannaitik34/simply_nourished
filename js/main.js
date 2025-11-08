@@ -1,19 +1,48 @@
 // Minimal interactivity: mobile nav toggle and subscription handling
 document.addEventListener('DOMContentLoaded', function(){
-  // Mobile nav
+  // Mobile nav (more robust)
   const toggle = document.querySelector('.nav-toggle');
-  const navList = document.querySelector('.nav-list');
+  let navList = null;
   if(toggle){
-    toggle.addEventListener('click', ()=>{
+    // Prefer the element referenced by aria-controls when available
+    const ctrl = toggle.getAttribute('aria-controls');
+    navList = ctrl ? document.getElementById(ctrl) : document.querySelector('.nav-list');
+    // Ensure toggle behaves as a button
+    if(!toggle.hasAttribute('type')) toggle.setAttribute('type','button');
+
+    toggle.addEventListener('click', (e)=>{
       const expanded = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!expanded));
       if(navList){
         navList.classList.toggle('open');
       }
+      e.stopPropagation();
     });
+
     // Close menu when a link is clicked (mobile)
-    navList && navList.addEventListener('click', (e)=>{
-      if(e.target.tagName === 'A' && window.innerWidth <= 900){
+    if(navList){
+      navList.addEventListener('click', (e)=>{
+        if(e.target.tagName === 'A' && window.innerWidth <= 900){
+          navList.classList.remove('open');
+          toggle.setAttribute('aria-expanded','false');
+        }
+      });
+    }
+
+    // Close when clicking outside the open menu
+    document.addEventListener('click', (e)=>{
+      if(!navList) return;
+      if(!navList.classList.contains('open')) return;
+      const target = e.target;
+      if(!navList.contains(target) && !toggle.contains(target)){
+        navList.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+      }
+    });
+
+    // Close via Escape key
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape' && navList && navList.classList.contains('open')){
         navList.classList.remove('open');
         toggle.setAttribute('aria-expanded','false');
       }
