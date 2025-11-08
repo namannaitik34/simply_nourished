@@ -20,9 +20,16 @@ body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Ne
 .nav-list{list-style:none; margin:0; padding:0; display:flex; gap:1rem}
 .nav-list a{color:var(--ink); text-decoration:none; font-weight:500}
 .nav-toggle{display:none}
-/* Mobile navigation toggle */
-.nav-toggle{background:transparent; border:1px solid transparent; padding:0.5rem 0.8rem; border-radius:8px; font-weight:600}
+/* Mobile navigation toggle (hamburger) */
+.nav-toggle{background:transparent; border:1px solid transparent; padding:0.25rem; border-radius:8px; font-weight:600; width:44px; height:40px; display:inline-flex; align-items:center; justify-content:center}
+.nav-toggle .hamburger{display:block; width:20px; height:2px; background:var(--ink); border-radius:2px; position:relative; transition:background 180ms ease}
+.nav-toggle .hamburger::before, .nav-toggle .hamburger::after{content:''; position:absolute; left:0; width:20px; height:2px; background:var(--ink); border-radius:2px; transition:transform 220ms ease, opacity 180ms ease}
+.nav-toggle .hamburger::before{transform:translateY(-7px)}
+.nav-toggle .hamburger::after{transform:translateY(7px)}
 .nav-toggle[aria-expanded="true"]{background:rgba(0,0,0,0.04)}
+.nav-toggle[aria-expanded="true"] .hamburger{background:transparent}
+.nav-toggle[aria-expanded="true"] .hamburger::before{transform:rotate(45deg) translate(3px,3px)}
+.nav-toggle[aria-expanded="true"] .hamburger::after{transform:rotate(-45deg) translate(3px,-3px)}
 .nav-list.open{display:flex; flex-direction:column; gap:0.5rem}
 .nav-list{transition:all 220ms ease}
 .hero{background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.9)); padding:3rem 0}
