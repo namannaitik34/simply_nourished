@@ -89,3 +89,23 @@ Instagram account for this project
 Embedding the live feed
 - Quick embed (recommended): use a service like LightWidget or SnapWidget — they provide simple iframe snippets you can paste into `index.html` or the footer.
 - More control: use the Instagram Basic Display API to fetch posts server-side and render them dynamically. This requires creating a Facebook/Meta app and an access token. I can scaffold a serverless function and client-side rendering if you'd like.
+
+---
+
+Deployment (added files)
+-------------------------
+
+I added a minimal GitHub Pages deployment setup so the site can be published directly from this repository.
+
+- `.nojekyll` — prevents GitHub Pages from processing the site with Jekyll (files served as-is).
+- `.github/workflows/pages.yml` — a GitHub Actions workflow that uploads the repository root as the Pages artifact and deploys it whenever you push to the `main` branch.
+- `.gitignore` — common ignores for local files.
+
+Notes:
+- The workflow deploys the repository root. If you only want to publish a subfolder (e.g., `dist/`), update `path` in `.github/workflows/pages.yml`.
+- After the first push the Pages site should appear under the repository Settings → Pages. The Action will handle subsequent deployments automatically on pushes to `main`.
+
+If you'd like, I can:
+- Enable GitHub Pages for a custom domain (add a `CNAME` file and configure DNS).
+- Switch deployment to Netlify, Vercel, or Cloudflare Pages and add a small configuration for those providers.
+- Optimize and add local copies of images with `srcset` and lazy-loading for performance before publishing.
