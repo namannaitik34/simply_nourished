@@ -136,6 +136,11 @@ img{max-width:100%; display:block}
   .testimonial{min-width:85%;}
 }
 
+/* Ensure hamburger is hidden on larger screens (desktop) */
+@media (min-width:901px){
+  .nav-toggle{display:none !important}
+}
+
 /* Ensure nav-list is accessible when opened */
 @media (max-width:600px){
   /* Slide-in left panel */
